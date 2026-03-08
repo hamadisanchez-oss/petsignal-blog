@@ -27,7 +27,7 @@ export default async function BlogPage() {
               <img src="/logo-color.png" alt="PetSignal" style={{ height: '32px', width: 'auto' }} />
             </Link>
             <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-              <Link href="https://petsignal.io" style={{ color: '#475569', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Home</Link>
+              
               <Link href="/blog" style={{ color: '#137dc5', fontSize: '14px', textDecoration: 'none', fontWeight: 600 }}>Blog</Link>
               <Link href="https://petsignal.io" style={{ background: '#137dc5', color: 'white', fontSize: '14px', textDecoration: 'none', fontWeight: 600, padding: '8px 18px', borderRadius: '10px' }}>Go to App →</Link>
             </div>
