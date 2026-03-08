@@ -18,7 +18,7 @@ export default async function BlogPage() {
   return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
-      <div style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', background: '#f8fafc', minHeight: '100vh' }}>
+      <div style={{ fontFamily: 'Inter, -apple-system, BlinkinkMacSystemFont, sans-serif', background: '#f8fafc', minHeight: '100vh' }}>
 
         {/* NAV */}
         <nav style={{ background: '#ffffff', borderBottom: '1px solid #e8f0fe', padding: '0 24px', position: 'sticky', top: 0, zIndex: 100 }}>
@@ -27,7 +27,6 @@ export default async function BlogPage() {
               <img src="/logo-color.png" alt="PetSignal" style={{ height: '32px', width: 'auto' }} />
             </Link>
             <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-              
               <Link href="/blog" style={{ color: '#137dc5', fontSize: '14px', textDecoration: 'none', fontWeight: 600 }}>Blog</Link>
               <Link href="https://petsignal.io" style={{ background: '#137dc5', color: 'white', fontSize: '14px', textDecoration: 'none', fontWeight: 600, padding: '8px 18px', borderRadius: '10px' }}>Go to App →</Link>
             </div>
@@ -37,21 +36,10 @@ export default async function BlogPage() {
         {/* HERO */}
         <div style={{ background: '#ffffff', padding: '64px 24px 48px', textAlign: 'center', borderBottom: '1px solid #e8f0fe' }}>
           <p style={{ color: '#137dc5', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 12px' }}>Blog</p>
-          <h1 style={{ color: '#1a1a2e', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 800, margin: '0 0 16px', lineHeight: 1.2 }}>Dog Health Tips & Insights</h1>
+          <h1 style={{ color: '#1a1a2e', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 800, margin: '0 0 16px', lineHeight: 1.2 }}>Dog Health Tips &amp; Insights</h1>
           <p style={{ color: '#64748b', fontSize: '16px', margin: '0 auto 32px', maxWidth: '520px', lineHeight: 1.6 }}>
-            Expert guidance to help you understand and monitor your dog's health between vet visits.
+            Expert guidance to help you understand and monitor your dog&apos;s health between vet visits.
           </p>
-          {/* Search bar */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '0', maxWidth: '480px', margin: '0 auto' }}>
-            <input
-              type="text"
-              placeholder="Search articles..."
-              style={{ flex: 1, padding: '12px 16px', border: '1.5px solid #e2e8f0', borderRight: 'none', borderRadius: '10px 0 0 10px', fontSize: '14px', outline: 'none', color: '#1a1a2e' }}
-            />
-            <button style={{ background: '#137dc5', color: 'white', border: 'none', padding: '12px 24px', borderRadius: '0 10px 10px 0', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>
-              Search
-            </button>
-          </div>
         </div>
 
         {/* MAIN CONTENT */}
@@ -69,9 +57,7 @@ export default async function BlogPage() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
                   {featured.map((post) => (
                     <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none' }}>
-                      <div style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', transition: 'transform 0.2s', cursor: 'pointer' }}
-                        onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
-                        onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}>
+                      <div className="post-card" style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', transition: 'transform 0.2s', cursor: 'pointer' }}>
                         <div style={{ background: 'linear-gradient(135deg, #1a3a6e 0%, #137dc5 100%)', height: '140px', display: 'flex', alignItems: 'flex-end', padding: '16px' }}>
                           <span style={{ background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '20px' }}>Dog Health</span>
                         </div>
@@ -124,6 +110,7 @@ export default async function BlogPage() {
 
         {/* MOBILE STYLES */}
         <style>{`
+          .post-card:hover { transform: translateY(-4px); }
           @media (max-width: 768px) {
             nav div { flex-wrap: wrap; gap: 12px; height: auto !important; padding: 12px 0; }
             div[style*="gridTemplateColumns"] { grid-template-columns: 1fr !important; }
@@ -133,7 +120,7 @@ export default async function BlogPage() {
         {/* FOOTER */}
         <footer style={{ background: '#1a1a2e', padding: '32px 24px', textAlign: 'center' }}>
           <img src="/logo-color.png" alt="PetSignal" style={{ height: '28px', width: 'auto', marginBottom: '8px', filter: 'brightness(0) invert(1)' }} />
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', margin: 0 }}>© 2026 PETSIGNAL · See what your dog can't tell you</p>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', margin: 0 }}>© 2026 PETSIGNAL · See what your dog can&apos;t tell you</p>
         </footer>
 
       </div>
