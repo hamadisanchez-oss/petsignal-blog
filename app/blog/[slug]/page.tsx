@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { client } from '@/lib/sanity'
+import { client, urlFor } from '@/lib/sanity'
 import { Post } from '@/lib/types'
 
 async function getPost(slug: string): Promise<Post> {
