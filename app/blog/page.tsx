@@ -22,16 +22,7 @@ export default async function BlogPage() {
           <div style={{ maxWidth: '720px', margin: '0 auto', padding: '24px 24px 32px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
               <Link href="https://petsignal.io" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="pGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#4aa8e0"/>
-                      <stop offset="100%" stopColor="#1a3a6e"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M20 10 L20 90" stroke="url(#pGrad)" strokeWidth="18" strokeLinecap="round"/>
-                  <path d="M20 10 Q70 10 70 35 Q70 60 20 60" stroke="url(#pGrad)" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                </svg>
+                <img src="/logo-white.png" alt="PetSignal" style={{height: '36px', width: 'auto'}} />
                 <span style={{ color: 'white', fontWeight: 800, fontSize: '18px', letterSpacing: '0.08em' }}>PETSIGNAL</span>
               </Link>
               <Link href="https://petsignal.io" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '14px', textDecoration: 'none', fontWeight: 600 }}>
