@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { client } from '@/lib/sanity'
+import { client, urlFor } from '@/lib/sanity'
 import { Post } from '@/lib/types'
 
 async function getPosts(): Promise<Post[]> {
@@ -18,7 +18,7 @@ export default async function BlogPage() {
   return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
-      <div style={{ fontFamily: 'Inter, -apple-system, BlinkinkMacSystemFont, sans-serif', background: '#f8fafc', minHeight: '100vh' }}>
+      <div style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', background: '#f8fafc', minHeight: '100vh' }}>
 
         {/* NAV */}
         <nav style={{ background: '#ffffff', borderBottom: '1px solid #e8f0fe', padding: '0 24px', position: 'sticky', top: 0, zIndex: 100 }}>
@@ -58,9 +58,17 @@ export default async function BlogPage() {
                   {featured.map((post) => (
                     <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none' }}>
                       <div className="post-card" style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', transition: 'transform 0.2s', cursor: 'pointer' }}>
-                        <div style={{ background: 'linear-gradient(135deg, #1a3a6e 0%, #137dc5 100%)', height: '140px', display: 'flex', alignItems: 'flex-end', padding: '16px' }}>
-                          <span style={{ background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '20px' }}>Dog Health</span>
-                        </div>
+                        {post.mainImage ? (
+                          <img
+                            src={urlFor(post.mainImage).width(600).height(340).url()}
+                            alt={post.title}
+                            style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }}
+                          />
+                        ) : (
+                          <div style={{ background: 'linear-gradient(135deg, #1a3a6e 0%, #137dc5 100%)', height: '180px', display: 'flex', alignItems: 'flex-end', padding: '16px' }}>
+                            <span style={{ background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '20px' }}>Dog Health</span>
+                          </div>
+                        )}
                         <div style={{ padding: '20px' }}>
                           <h3 style={{ color: '#1a1a2e', fontSize: '16px', fontWeight: 700, margin: '0 0 8px', lineHeight: 1.4 }}>{post.title}</h3>
                           {post.excerpt && <p style={{ color: '#64748b', fontSize: '13px', margin: '0 0 12px', lineHeight: 1.5 }}>{post.excerpt}</p>}
@@ -80,7 +88,15 @@ export default async function BlogPage() {
                   <h3 style={{ color: '#1a1a2e', fontWeight: 700, fontSize: '16px', margin: '0 0 16px', paddingBottom: '12px', borderBottom: '2px solid #e8f4fd' }}>Featured</h3>
                   {featured.map((post) => (
                     <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', display: 'flex', gap: '12px', marginBottom: '16px', alignItems: 'flex-start' }}>
-                      <div style={{ width: '56px', height: '56px', borderRadius: '8px', background: 'linear-gradient(135deg, #1a3a6e, #137dc5)', flexShrink: 0 }} />
+                      {post.mainImage ? (
+                        <img
+                          src={urlFor(post.mainImage).width(112).height(112).url()}
+                          alt={post.title}
+                          style={{ width: '56px', height: '56px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
+                        />
+                      ) : (
+                        <div style={{ width: '56px', height: '56px', borderRadius: '8px', background: 'linear-gradient(135deg, #1a3a6e, #137dc5)', flexShrink: 0 }} />
+                      )}
                       <div>
                         <p style={{ color: '#94a3b8', fontSize: '11px', margin: '0 0 4px' }}>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}</p>
                         <p style={{ color: '#1a1a2e', fontSize: '13px', fontWeight: 600, margin: 0, lineHeight: 1.4 }}>{post.title}</p>
@@ -94,7 +110,15 @@ export default async function BlogPage() {
                     <h3 style={{ color: '#1a1a2e', fontWeight: 700, fontSize: '16px', margin: '0 0 16px', paddingBottom: '12px', borderBottom: '2px solid #e8f4fd' }}>Latest</h3>
                     {latest.map((post) => (
                       <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', display: 'flex', gap: '12px', marginBottom: '16px', alignItems: 'flex-start' }}>
-                        <div style={{ width: '56px', height: '56px', borderRadius: '8px', background: '#e8f4fd', flexShrink: 0 }} />
+                        {post.mainImage ? (
+                          <img
+                            src={urlFor(post.mainImage).width(112).height(112).url()}
+                            alt={post.title}
+                            style={{ width: '56px', height: '56px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
+                          />
+                        ) : (
+                          <div style={{ width: '56px', height: '56px', borderRadius: '8px', background: '#e8f4fd', flexShrink: 0 }} />
+                        )}
                         <div>
                           <p style={{ color: '#94a3b8', fontSize: '11px', margin: '0 0 4px' }}>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}</p>
                           <p style={{ color: '#1a1a2e', fontSize: '13px', fontWeight: 600, margin: 0, lineHeight: 1.4 }}>{post.title}</p>
