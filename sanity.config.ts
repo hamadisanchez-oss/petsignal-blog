@@ -1,12 +1,12 @@
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 
 export default defineConfig({
   name: 'petsignal-blog',
   title: 'PetSignal Blog',
   projectId: 'x83dfyeq',
   dataset: 'production',
-  plugins: [deskTool()],
+  plugins: [structureTool()],
   schema: {
     types: [
       {
