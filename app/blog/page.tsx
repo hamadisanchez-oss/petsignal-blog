@@ -12,8 +12,6 @@ async function getPosts(): Promise<Post[]> {
 
 export default async function BlogPage() {
   const posts = await getPosts()
-  const featured = posts.slice(0, 3)
-  const latest = posts.slice(3, 8)
 
   return (
     <>
@@ -34,110 +32,61 @@ export default async function BlogPage() {
         </nav>
 
         {/* HERO */}
-        <div style={{ background: '#ffffff', padding: '64px 24px 48px', textAlign: 'center', borderBottom: '1px solid #e8f0fe' }}>
+        <div style={{ background: '#ffffff', padding: '48px 24px', textAlign: 'center', borderBottom: '1px solid #e8f0fe' }}>
           <p style={{ color: '#137dc5', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 12px' }}>Blog</p>
           <h1 style={{ color: '#1a1a2e', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 800, margin: '0 0 16px', lineHeight: 1.2 }}>Dog Health Tips &amp; Insights</h1>
-          <p style={{ color: '#64748b', fontSize: '16px', margin: '0 auto 32px', maxWidth: '520px', lineHeight: 1.6 }}>
+          <p style={{ color: '#64748b', margin: '0 auto', maxWidth: '520px', lineHeight: 1.6 }}>
             Expert guidance to help you understand and monitor your dog&apos;s health between vet visits.
           </p>
         </div>
 
-        {/* MAIN CONTENT */}
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 24px', display: 'grid', gridTemplateColumns: posts.length > 0 ? 'minmax(0,1fr) 300px' : '1fr', gap: '40px' }}>
-
+        {/* POSTS */}
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '48px 24px' }}>
           {posts.length === 0 ? (
             <div style={{ textAlign: 'center', background: 'white', borderRadius: '16px', padding: '64px 48px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
               <p style={{ color: '#64748b', fontSize: '16px', margin: 0 }}>No posts yet. Check back soon!</p>
             </div>
           ) : (
-            <>
-              {/* LEFT: POST GRID */}
-              <div>
-                <h2 style={{ color: '#1a1a2e', fontWeight: 700, fontSize: '18px', margin: '0 0 20px' }}>Latest Articles</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
-                  {featured.map((post) => (
-                    <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none' }}>
-                      <div className="post-card" style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', transition: 'transform 0.2s', cursor: 'pointer' }}>
-                        {post.mainImage ? (
-                          <img
-                            src={urlFor(post.mainImage).width(600).height(340).url()}
-                            alt={post.title}
-                            style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }}
-                          />
-                        ) : (
-                          <div style={{ background: 'linear-gradient(135deg, #1a3a6e 0%, #137dc5 100%)', height: '180px', display: 'flex', alignItems: 'flex-end', padding: '16px' }}>
-                            <span style={{ background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '20px' }}>Dog Health</span>
-                          </div>
-                        )}
-                        <div style={{ padding: '20px' }}>
-                          <h3 style={{ color: '#1a1a2e', fontSize: '16px', fontWeight: 700, margin: '0 0 8px', lineHeight: 1.4 }}>{post.title}</h3>
-                          {post.excerpt && <p style={{ color: '#64748b', fontSize: '13px', margin: '0 0 12px', lineHeight: 1.5 }}>{post.excerpt}</p>}
-                          <p style={{ color: '#137dc5', fontSize: '12px', fontWeight: 600, margin: 0 }}>
-                            {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* RIGHT: SIDEBAR */}
-              <div>
-                <div style={{ background: 'white', borderRadius: '16px', padding: '24px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', marginBottom: '24px' }}>
-                  <h3 style={{ color: '#1a1a2e', fontWeight: 700, fontSize: '16px', margin: '0 0 16px', paddingBottom: '12px', borderBottom: '2px solid #e8f4fd' }}>Featured</h3>
-                  {featured.map((post) => (
-                    <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', display: 'flex', gap: '12px', marginBottom: '16px', alignItems: 'flex-start' }}>
-                      {post.mainImage ? (
-                        <img
-                          src={urlFor(post.mainImage).width(112).height(112).url()}
-                          alt={post.title}
-                          style={{ width: '56px', height: '56px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
-                        />
-                      ) : (
-                        <div style={{ width: '56px', height: '56px', borderRadius: '8px', background: 'linear-gradient(135deg, #1a3a6e, #137dc5)', flexShrink: 0 }} />
-                      )}
-                      <div>
-                        <p style={{ color: '#94a3b8', fontSize: '11px', margin: '0 0 4px' }}>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}</p>
-                        <p style={{ color: '#1a1a2e', fontSize: '13px', fontWeight: 600, margin: 0, lineHeight: 1.4 }}>{post.title}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-
-                {latest.length > 0 && (
-                  <div style={{ background: 'white', borderRadius: '16px', padding: '24px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-                    <h3 style={{ color: '#1a1a2e', fontWeight: 700, fontSize: '16px', margin: '0 0 16px', paddingBottom: '12px', borderBottom: '2px solid #e8f4fd' }}>Latest</h3>
-                    {latest.map((post) => (
-                      <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', display: 'flex', gap: '12px', marginBottom: '16px', alignItems: 'flex-start' }}>
-                        {post.mainImage ? (
-                          <img
-                            src={urlFor(post.mainImage).width(112).height(112).url()}
-                            alt={post.title}
-                            style={{ width: '56px', height: '56px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
-                          />
-                        ) : (
-                          <div style={{ width: '56px', height: '56px', borderRadius: '8px', background: '#e8f4fd', flexShrink: 0 }} />
-                        )}
-                        <div>
-                          <p style={{ color: '#94a3b8', fontSize: '11px', margin: '0 0 4px' }}>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}</p>
-                          <p style={{ color: '#1a1a2e', fontSize: '13px', fontWeight: 600, margin: 0, lineHeight: 1.4 }}>{post.title}</p>
-                        </div>
-                      </Link>
-                    ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              {posts.map((post) => (
+                <Link key={post._id} href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none' }}>
+                  <div style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'row', cursor: 'pointer' }}>
+                    {post.mainImage ? (
+                      <img
+                        src={urlFor(post.mainImage).width(300).height(200).url()}
+                        alt={post.title}
+                        style={{ width: '200px', minWidth: '200px', height: '160px', objectFit: 'cover', display: 'block' }}
+                      />
+                    ) : (
+                      <div style={{ width: '200px', minWidth: '200px', height: '160px', background: 'linear-gradient(135deg, #1a3a6e, #137dc5)' }} />
+                    )}
+                    <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <p style={{ color: '#94a3b8', fontSize: '12px', margin: '0 0 8px', fontWeight: 600 }}>
+                        {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}
+                      </p>
+                      <h3 style={{ color: '#1a1a2e', fontSize: '18px', fontWeight: 700, margin: '0 0 8px', lineHeight: 1.3 }}>{post.title}</h3>
+                      {post.excerpt && <p style={{ color: '#64748b', fontSize: '14px', margin: 0, lineHeight: 1.5 }}>{post.excerpt}</p>}
+                      <p style={{ color: '#137dc5', fontSize: '13px', fontWeight: 600, margin: '12px 0 0' }}>Read article →</p>
+                    </div>
                   </div>
-                )}
-              </div>
-            </>
+                </Link>
+              ))}
+            </div>
           )}
         </div>
 
         {/* MOBILE STYLES */}
         <style>{`
-          .post-card:hover { transform: translateY(-4px); }
-          @media (max-width: 768px) {
-            nav div { flex-wrap: wrap; gap: 12px; height: auto !important; padding: 12px 0; }
-            div[style*="gridTemplateColumns"] { grid-template-columns: 1fr !important; }
+          @media (max-width: 600px) {
+            a > div[style*="flex-direction: row"] {
+              flex-direction: column !important;
+            }
+            a > div[style*="flex-direction: row"] img,
+            a > div[style*="flex-direction: row"] > div[style*="200px"] {
+              width: 100% !important;
+              min-width: 100% !important;
+              height: 180px !important;
+            }
           }
         `}</style>
 
