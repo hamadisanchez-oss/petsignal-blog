@@ -12,8 +12,9 @@ async function getPost(slug: string): Promise<Post> {
   )
 }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug)
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPost(slug)
 
   if (!post) {
     return (
@@ -84,4 +85,3 @@ export default async function PostPage({ params }: { params: { slug: string } })
     </>
   )
 }
-
