@@ -113,10 +113,6 @@ export default async function BlogPage() {
         .post-card-image {
           width: 240px;
           min-width: 240px;
-          height: 100%;
-          min-height: 200px;
-          object-fit: cover;
-          display: block;
           flex-shrink: 0;
           align-self: stretch;
         }
@@ -241,15 +237,14 @@ export default async function BlogPage() {
             posts.map((post) => (
               <Link key={post._id} href={`/blog/${post.slug.current}`} className="post-card">
                 <div className="post-card-inner">
-                  {post.mainImage ? (
-                    <img
-                      className="post-card-image"
-                      src={urlFor(post.mainImage).width(480).height(400).url()}
-                      alt={post.title}
-                    />
-                  ) : (
-                    <div className="post-card-image-placeholder" />
-                  )}
+                  <div
+                    className="post-card-image"
+                    style={post.mainImage ? {
+                      backgroundImage: `url(${urlFor(post.mainImage).width(480).height(600).url()})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    } : { background: 'linear-gradient(135deg, #1a3a6e 0%, #137dc5 100%)' }}
+                  />
                   <div className="post-card-body">
                     <p className="post-card-date">
                       {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}
