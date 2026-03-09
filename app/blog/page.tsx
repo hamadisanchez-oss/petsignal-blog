@@ -113,10 +113,12 @@ export default async function BlogPage() {
         .post-card-image {
           width: 240px;
           min-width: 240px;
-          height: 200px;
+          height: 100%;
+          min-height: 200px;
           object-fit: cover;
           display: block;
           flex-shrink: 0;
+          align-self: stretch;
         }
         .post-card-image-placeholder {
           width: 240px;
