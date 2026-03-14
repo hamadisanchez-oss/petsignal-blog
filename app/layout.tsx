@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PETSIGNAL Blog — Dog Health Tips & Insights",
+  title: "CANIQO Blog — Dog Health Tips & Insights",
   description: "Expert guidance to help you understand and monitor your dog's health between vet visits.",
   icons: {
     icon: "/symbol.png",
