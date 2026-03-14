@@ -212,12 +212,12 @@ export default async function BlogPage() {
         {/* NAV */}
         <nav className="blog-nav">
           <div className="blog-nav-inner">
-            <Link href="https://petsignal.io" style={{ textDecoration: 'none' }}>
-              <img src="/logo-color.png" alt="PetSignal" style={{ height: '30px', width: 'auto' }} />
+            <Link href="https://caniqo.com" style={{ textDecoration: 'none' }}>
+              <img src="/logo-color.png" alt="Caniqo" style={{ height: '30px', width: 'auto' }} />
             </Link>
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
               <Link href="/blog" style={{ fontFamily: 'Inter, sans-serif', color: '#137dc5', fontSize: '14px', textDecoration: 'none', fontWeight: 600 }}>Blog</Link>
-              <Link href="https://petsignal.io" className="nav-cta">Go to App →</Link>
+              <Link href="https://caniqo.com" className="nav-cta">Go to App →</Link>
             </div>
           </div>
         </nav>
@@ -261,8 +261,8 @@ export default async function BlogPage() {
 
         {/* FOOTER */}
         <footer className="blog-footer">
-          <img src="/logo-color.png" alt="PetSignal" style={{ height: '26px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.6 }} />
-          <p>© {new Date().getFullYear()} PETSIGNAL · See what your dog can&apos;t tell you</p>
+          <img src="/logo-color.png" alt="Caniqo" style={{ height: '26px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.6 }} />
+          <p>© {new Date().getFullYear()} CANIQO · See what your dog can&apos;t tell you</p>
         </footer>
 
       </div>

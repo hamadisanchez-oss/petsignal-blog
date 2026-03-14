@@ -3,7 +3,7 @@ import { structureTool } from 'sanity/structure'
 
 export default defineConfig({
   name: 'petsignal-blog',
-  title: 'PetSignal Blog',
+  title: 'Caniqo Blog',
   projectId: 'x83dfyeq',
   dataset: 'production',
   plugins: [structureTool()],

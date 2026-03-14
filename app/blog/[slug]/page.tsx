@@ -33,8 +33,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <header style={{ background: 'linear-gradient(135deg, #1a3a6e 0%, #137dc5 100%)' }}>
           <div style={{ maxWidth: '720px', margin: '0 auto', padding: '24px 24px 32px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Link href="https://petsignal.io" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-                <img src="/logo-white.png" alt="PetSignal" style={{ height: '36px', width: 'auto' }} />
+              <Link href="https://caniqo.com" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+                <img src="/logo-white.png" alt="Caniqo" style={{ height: '36px', width: 'auto' }} />
               </Link>
               <Link href="/blog" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '14px', textDecoration: 'none', fontWeight: 600 }}>
                 ← All posts
@@ -71,14 +71,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <div style={{ background: 'linear-gradient(135deg, #1a3a6e 0%, #137dc5 100%)', borderRadius: '16px', padding: '32px', textAlign: 'center', marginTop: '24px' }}>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '14px', margin: '0 0 8px' }}>AI-powered dog health monitoring</p>
             <h3 style={{ color: 'white', fontWeight: 800, fontSize: '22px', margin: '0 0 20px' }}>See what your dog cannot tell you</h3>
-            <Link href="https://petsignal.io" style={{ background: 'white', color: '#137dc5', fontWeight: 700, fontSize: '15px', padding: '12px 28px', borderRadius: '10px', textDecoration: 'none', display: 'inline-block' }}>
-              Try PetSignal Free →
+            <Link href="https://caniqo.com" style={{ background: 'white', color: '#137dc5', fontWeight: 700, fontSize: '15px', padding: '12px 28px', borderRadius: '10px', textDecoration: 'none', display: 'inline-block' }}>
+              Try Caniqo Free →
             </Link>
           </div>
         </main>
         <footer style={{ borderTop: '1px solid #e2e8f0', padding: '24px', textAlign: 'center' }}>
           <p style={{ color: '#94a3b8', fontSize: '13px', margin: 0 }}>
-            © {new Date().getFullYear()} PETSIGNAL · <em>See what your dog cannot tell you</em>
+            © {new Date().getFullYear()} CANIQO · <em>See what your dog cannot tell you</em>
           </p>
         </footer>
       </div>
